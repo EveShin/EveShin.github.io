@@ -51,7 +51,25 @@
     "casualAlt": "Aeri Shin",
     "email": "shinairi0129@gmail.com",
     "github": "https://github.com/EveShin",
-    "githubLabel": "github.com/EveShin"
+    "githubLabel": "github.com/EveShin",
+    "education": {
+      "id": "graduation",
+      "rows": [
+        {
+          "label": "B.S. Electronics and Information Engineering",
+          "note": "Korea University Sejong"
+        },
+        {
+          "label": "평균평점",
+          "note": "3.24 / 4.5 (총 취득학점 137.0)"
+        },
+        {
+          "label": "TOEIC",
+          "note": "710 (LC 450 · RC 260)"
+        }
+      ],
+      "linkLabel": "전체 성적표 →"
+    }
   },
   "lanes": {
     "research": {
@@ -80,19 +98,16 @@
       "start": "2026-08",
       "end": "2026-08",
       "dateLabel": "2026.08",
-      "summary": "학사 졸업 예정. 총 취득학점 137.0, 평균평점 3.24 / 4.5. 인공지능 관련 교과목에서 최고 성적을 받았습니다.",
-      "tags": [
-        "GPA 3.24 / 4.5",
-        "TOEIC 710"
-      ],
+      "summary": "학사 졸업 예정, 평균평점 3.24 / 4.5 (총 취득학점 137.0)",
+      "tags": [],
       "sections": [
         {
           "h": "인공지능 관련 주요 교과목",
-          "body": "<p>학부 후반 인공지능 계열 교과목에서 받은 성적입니다. 2025학년도 2학기는 평균평점 4.00 / 4.5, 환산점수 95.0을 기록했습니다.</p><table class='tbl'><thead><tr><th>Course</th><th class='num'>Credits</th><th class='num'>Grade</th></tr></thead><tbody><tr class='hi'><td>Advanced Deep Learning Programming</td><td class='num'>3.0</td><td class='num'><strong>A+</strong></td></tr><tr class='hi'><td>IoT Artificial Intelligence</td><td class='num'>3.0</td><td class='num'><strong>A+</strong></td></tr><tr class='hi'><td>Large Language Models &amp; ChatGPT</td><td class='num'>3.0</td><td class='num'><strong>A+</strong></td></tr><tr class='hi'><td>Introduction to Artificial Intelligence</td><td class='num'>3.0</td><td class='num'><strong>A+</strong></td></tr><tr class='hi'><td>Digital Signal Processing</td><td class='num'>3.0</td><td class='num'><strong>A</strong></td></tr></tbody></table>"
+          "body": "<p>학부 후반 인공지능 계열 교과목에서 받은 성적입니다. 2025학년도 2학기는 평균평점 4.00 / 4.5, 환산점수 95.0을 기록했습니다.</p><table class='tbl'><thead><tr><th>교과목명</th><th class='num'>학점</th><th class='num'>성적</th></tr></thead><tbody><tr class='hi'><td>고급딥러닝프로그래밍 (영강)</td><td class='num'>3.0</td><td class='num'><strong>A+</strong></td></tr><tr class='hi'><td>IoT 인공지능 (영강)</td><td class='num'>3.0</td><td class='num'><strong>A+</strong></td></tr><tr class='hi'><td>거대언어모델과 챗GPT</td><td class='num'>3.0</td><td class='num'><strong>A+</strong></td></tr><tr class='hi'><td>인공지능개론 (영강)</td><td class='num'>3.0</td><td class='num'><strong>A+</strong></td></tr><tr class='hi'><td>디지털신호처리 (영강)</td><td class='num'>3.0</td><td class='num'><strong>A</strong></td></tr></tbody></table>"
         },
         {
           "h": "공인 어학 성적",
-          "body": "<table class='tbl'><thead><tr><th>Test</th><th class='num'>Date</th><th class='num'>Score</th></tr></thead><tbody><tr><td>TOEIC</td><td class='num'>2026.05.31</td><td class='num'><strong>710</strong> (LC 450 · RC 260)</td></tr></tbody></table>"
+          "body": "<table class='tbl'><thead><tr><th>시험</th><th class='num'>취득일</th><th class='num'>점수</th></tr></thead><tbody><tr><td>TOEIC</td><td class='num'>2026.05.31</td><td class='num'><strong>710</strong> (LC 450 · RC 260)</td></tr></tbody></table>"
         },
         {
           "h": "전체 이수 내역",

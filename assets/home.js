@@ -108,6 +108,34 @@
 
   const blocks = [];
 
+  /* ---------- 학력 ---------- */
+
+  if (p.education && p.education.rows) {
+    const bed = el("section", "block");
+    bed.appendChild(el("h2", "block-h", "Education"));
+    const ul = el("ul", "rowlist");
+    p.education.rows.forEach((r) => {
+      const li = el("li");
+      const row = el("div", "row");
+      row.appendChild(el("span", "row-title", r.label));
+      row.appendChild(el("span", "row-note", r.note));
+      li.appendChild(row);
+      ul.appendChild(li);
+    });
+    const target = byId.get(p.education.id);
+    if (target && hasDetail(target)) {
+      const li = el("li");
+      const a = el("a", "row row-link");
+      a.href = entryHref(p.education.id, "home");
+      a.appendChild(el("span", "row-title", p.education.linkLabel || "자세히 →"));
+      li.appendChild(a);
+      ul.appendChild(li);
+    }
+    bed.appendChild(ul);
+    root.appendChild(bed);
+    blocks.push(bed);
+  }
+
   /* ---------- 연락처 ---------- */
 
   const bcon = el("section", "block");
