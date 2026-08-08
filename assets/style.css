@@ -308,7 +308,7 @@ a { color: inherit; }
 .contact .lbl { border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: border-color 240ms var(--ease); }
 .contact a:hover .lbl { border-bottom-color: var(--ink); }
 
-.intro { margin-top: 46px; }
+.intro { margin-top: 46px; margin-bottom: 26px; }
 
 .intro p { margin: 0 0 16px; font-size: 17px; line-height: 1.74; }
 
@@ -321,7 +321,7 @@ a { color: inherit; }
 .how p { margin: 0 0 12px; font-size: 15px; line-height: 1.76; color: var(--ink-2); }
 .how p:last-child { margin-bottom: 0; }
 
-.block { margin-top: 54px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.block { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--rule); }
 
 .block-h {
   margin: 0 0 18px;
@@ -389,12 +389,12 @@ a.row:hover { padding-left: 8px; }
 
 .edu-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
-.row-title { font-family: var(--display); font-weight: 600; font-size: 15.5px; letter-spacing: -0.012em; }
+.row-title { font-size: 15px; letter-spacing: -0.005em; }
 .row-note { font-size: 12.5px; color: var(--ink-3); text-align: right; flex: 1 1 auto; min-width: 0; }
 
 .pub { padding: 14px 0; border-bottom: 1px solid var(--rule-2); }
 .pub:last-child { border-bottom: 0; }
-.pub-title { display: block; font-size: 15px; line-height: 1.5; font-weight: 500; }
+.pub-title { display: block; font-size: 15px; line-height: 1.5; font-weight: 400; }
 .pub-venue { display: block; margin-top: 5px; font-size: 13px; color: var(--ink-2); }
 .pub-note { display: block; margin-top: 3px; font-family: var(--mono); font-size: 11px; color: var(--ink-3); }
 
