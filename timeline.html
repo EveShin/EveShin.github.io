@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>Timeline — Aeri Shin</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aeri Shin — reinforcement learning, embodied AI, world models. 연구 및 프로젝트 기록.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  (function () {
+    try {
+      var p = localStorage.getItem("aeri-theme") || "system";
+      var dark = p === "dark" || (p === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+    } catch (e) {
+      document.documentElement.dataset.theme = "light";
+    }
+  })();
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="nav-brand" href="index.html">Aeri&nbsp;Shin</a>
+    <nav class="nav-tabs" aria-label="Main"></nav>
+    <button class="theme-btn" type="button" aria-label="테마 변경">◐</button>
+  </div>
+</header>
+<main class="page" id="tlpage"><p class="msg">불러오는 중…</p></main>
+<footer class="foot"></footer>
+<script src="assets/core.js"></script>
+<script src="assets/timeline.js"></script>
+</body>
+</html>
