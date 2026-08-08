@@ -204,7 +204,7 @@ function initLightbox(root) {
 
 /* 본문 HTML 안의 figure 이미지에 다크모드 반전 플래그를 붙입니다.
    반전이 어울리지 않는 사진·스크린샷은 파일명으로 걸러냅니다. */
-const NO_INVERT = ["aivs-seg-psp", "aivs-seg-deeplab", "bada-mockup", "cv-voc-result", "anc-spectrogram", "paper-lapa", "paper-groot", "paper-dinowm"];
+const NO_INVERT = ["aivs-seg-psp", "aivs-seg-deeplab", "bada-mockup", "cv-voc-result", "anc-spectrogram", "paper-lapa", "paper-groot", "paper-dinowm", "luna-"];
 
 function markInvert(root) {
   root.querySelectorAll(".fig img, .shot img").forEach((im) => {

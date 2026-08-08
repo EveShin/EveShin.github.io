@@ -53,7 +53,6 @@ async function renderList(currentHref, originKey) {
     const foot = el("div", "card-foot");
     (e.outcomes || []).forEach((o) => foot.appendChild(el("span", "tag tag-out", o.label)));
     (e.tags || []).forEach((t) => foot.appendChild(el("span", "tag", t)));
-    if (hasDetail(e)) foot.appendChild(el("span", "more", "자세히 →"));
     if (foot.childNodes.length) card.appendChild(foot);
 
     cards.appendChild(card);

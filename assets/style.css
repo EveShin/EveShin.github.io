@@ -418,7 +418,6 @@ a.card:hover { padding-left: 10px; }
 
 .tag-out { border-color: var(--ink-3); color: var(--ink); }
 .more { font-family: var(--mono); font-size: 11px; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
-a.card:hover .more { letter-spacing: 0.04em; }
 
 /* ---------- rollout strip ---------- */
 
@@ -592,6 +591,39 @@ html[data-theme="dark"] .shot img[data-invert="1"] { filter: invert(1) hue-rotat
 
 .fig figcaption em { font-style: italic; box-shadow: none; }
 .cap-plain { font-family: var(--body) !important; font-size: 12px !important; }
+
+
+/* 성적표 */
+
+.tbl .num { text-align: right; white-space: nowrap; }
+.tbl th.num { text-align: right; }
+
+.tbl-tr td:first-child { width: 100%; }
+
+.tbl .sem td {
+  padding-top: 20px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-3);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.tbl .sem:first-child td { padding-top: 6px; }
+.tbl .sem td span { float: right; }
+.tbl .hi td { color: var(--ink); }
+.tbl tbody tr:last-child td { border-bottom: 1px solid var(--rule-2); }
+
+/* 이미지 두 장 나란히 — 높이를 맞춰 정렬 */
+
+.fig-row { display: flex; gap: 12px; margin: 22px 0; align-items: stretch; }
+.fig-row .fig { margin: 0; flex: 1 1 0; min-width: 0; display: flex; }
+.fig-row .fig img { height: 260px; width: 100%; object-fit: cover; padding: 0; }
+
+@media (max-width: 560px) {
+  .fig-row { flex-direction: column; }
+  .fig-row .fig img { height: 200px; }
+}
 
 /* lightbox */
 
