@@ -121,14 +121,17 @@
     if (ed.school) head.appendChild(el("span", "edu-school", ed.school));
     box.appendChild(head);
 
-    (ed.notes || []).forEach((t) => box.appendChild(el("span", "edu-note", t)));
+    const sub = el("div", "edu-sub");
+    const notes = el("span", "edu-note", (ed.notes || []).join(" · "));
+    sub.appendChild(notes);
 
     const target = byId.get(ed.id);
     if (target && hasDetail(target)) {
       const a = el("a", "edu-link", ed.linkLabel || "자세히 →");
       a.href = entryHref(ed.id, "home");
-      box.appendChild(a);
+      sub.appendChild(a);
     }
+    box.appendChild(sub);
 
     bed.appendChild(box);
     root.appendChild(bed);
