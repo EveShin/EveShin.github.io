@@ -110,28 +110,27 @@
 
   /* ---------- 학력 ---------- */
 
-  if (p.education && p.education.rows) {
+  if (p.education) {
+    const ed = p.education;
     const bed = el("section", "block");
     bed.appendChild(el("h2", "block-h", "Education"));
-    const ul = el("ul", "rowlist");
-    p.education.rows.forEach((r) => {
-      const li = el("li");
-      const row = el("div", "row");
-      row.appendChild(el("span", "row-title", r.label));
-      row.appendChild(el("span", "row-note", r.note));
-      li.appendChild(row);
-      ul.appendChild(li);
-    });
-    const target = byId.get(p.education.id);
+
+    const box = el("div", "edu");
+    const head = el("div", "edu-head");
+    head.appendChild(el("span", "edu-degree", ed.degree));
+    if (ed.school) head.appendChild(el("span", "edu-school", ed.school));
+    box.appendChild(head);
+
+    (ed.notes || []).forEach((t) => box.appendChild(el("span", "edu-note", t)));
+
+    const target = byId.get(ed.id);
     if (target && hasDetail(target)) {
-      const li = el("li");
-      const a = el("a", "row row-link");
-      a.href = entryHref(p.education.id, "home");
-      a.appendChild(el("span", "row-title", p.education.linkLabel || "자세히 →"));
-      li.appendChild(a);
-      ul.appendChild(li);
+      const a = el("a", "edu-link", ed.linkLabel || "자세히 →");
+      a.href = entryHref(ed.id, "home");
+      box.appendChild(a);
     }
-    bed.appendChild(ul);
+
+    bed.appendChild(box);
     root.appendChild(bed);
     blocks.push(bed);
   }

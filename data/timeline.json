@@ -54,19 +54,11 @@
     "githubLabel": "github.com/EveShin",
     "education": {
       "id": "graduation",
-      "rows": [
-        {
-          "label": "B.S. Electronics and Information Engineering",
-          "note": "Korea University Sejong"
-        },
-        {
-          "label": "평균평점",
-          "note": "3.24 / 4.5 (총 취득학점 137.0)"
-        },
-        {
-          "label": "TOEIC",
-          "note": "710 (LC 450 · RC 260)"
-        }
+      "degree": "B.S. Electronics and Information Engineering",
+      "school": "Korea University Sejong",
+      "notes": [
+        "평균평점 3.24 / 4.5 (총 취득학점 137.0)",
+        "TOEIC 710 (LC 450 · RC 260)"
       ],
       "linkLabel": "전체 성적표 →"
     }
