@@ -162,10 +162,48 @@
   /* ---------- 관심 분야 ---------- */
 
   const bi = el("section", "block");
-  bi.appendChild(el("h2", "block-h", "Research Interests"));
+  const bih = el("h2", "block-h", "Research Interests");
+  if (p.interestsHint) bih.appendChild(el("span", "block-hint", p.interestsHint));
+  bi.appendChild(bih);
+
   const chips = el("div", "chips");
-  (p.interests || []).forEach((t) => chips.appendChild(el("span", "chip", t)));
+  const panel = el("div", "interest-panel");
+  const panelText = el("p", "interest-desc");
+  panel.appendChild(panelText);
+
+  const items = (p.interests || []).map((t) => (typeof t === "string" ? { label: t } : t));
+  const buttons = [];
+  let openIndex = -1;
+
+  const closePanel = () => {
+    openIndex = -1;
+    panel.classList.remove("on");
+    buttons.forEach((b) => b.setAttribute("aria-expanded", "false"));
+  };
+
+  items.forEach((t, i) => {
+    if (!t.desc) {
+      chips.appendChild(el("span", "chip", t.label));
+      return;
+    }
+    const btn = el("button", "chip chip-btn", t.label);
+    btn.type = "button";
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-controls", "interest-panel");
+    btn.addEventListener("click", () => {
+      if (openIndex === i) { closePanel(); return; }
+      openIndex = i;
+      buttons.forEach((b, j) => b.setAttribute("aria-expanded", j === i ? "true" : "false"));
+      panelText.textContent = t.desc;
+      panel.classList.add("on");
+    });
+    buttons.push(btn);
+    chips.appendChild(btn);
+  });
+
   bi.appendChild(chips);
+  panel.id = "interest-panel";
+  bi.appendChild(panel);
   root.appendChild(bi);
   blocks.push(bi);
 
