@@ -19,7 +19,7 @@
   const id = params.get("id");
   const fromKey = params.get("from");
 
-  const sorted = sortEntries(entries);
+  const sorted = sortEntries(entries).filter((e) => !e.hidden);
   const e = sorted.find((x) => x.id === id);
 
   root.innerHTML = "";

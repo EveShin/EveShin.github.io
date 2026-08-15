@@ -13,7 +13,7 @@
   }
 
   const p = data.profile;
-  const byId = new Map(data.entries.map((e) => [e.id, e]));
+  const byId = new Map(data.entries.filter((e) => !e.hidden).map((e) => [e.id, e]));
   fillFooter(p);
 
   root.innerHTML = "";

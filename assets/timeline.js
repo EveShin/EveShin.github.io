@@ -15,7 +15,7 @@
   const { profile, lanes, entries } = data;
   fillFooter(profile);
 
-  const sorted = sortEntries(entries);
+  const sorted = sortEntries(entries).filter((e) => !e.hidden);
   const laneKeys = Object.keys(lanes);
 
   root.innerHTML = "";

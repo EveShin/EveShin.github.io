@@ -131,6 +131,7 @@
       ]
     },
     {
+      "hidden": true,
       "id": "dive",
       "lane": "project",
       "title": "BADA — Busan All-Data Assistance",

@@ -17,7 +17,7 @@ async function renderList(currentHref, originKey) {
 
   fillFooter(data.profile);
 
-  const items = sortEntries(data.entries).filter((e) => e.lane === laneKey);
+  const items = sortEntries(data.entries).filter((e) => e.lane === laneKey && !e.hidden);
 
   root.innerHTML = "";
 
