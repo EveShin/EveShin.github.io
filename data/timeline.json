@@ -226,10 +226,6 @@
         "DeepLabv3",
         "ViT"
       ],
-      "hero": {
-        "src": "assets/img/aivs-seg-psp.jpg",
-        "invert": false
-      },
       "sections": [
         {
           "h": "연구실 소개",
@@ -237,11 +233,11 @@
         },
         {
           "h": "1. PSPNet vs DeepLabv3",
-          "body": "<p>두 모델이 공간적 해상도(Spatial Resolution) 손실 없이 수용 영역(Receptive Field)을 확장하는 서로 다른 접근 방식을 분석했습니다. PSPNet은 다양한 스케일의 특징을 통합하는 피라미드 풀링(Pyramid Pooling) 모듈을, DeepLabv3는 필터 내 빈 공간을 두어 수용 영역을 넓히는 Atrous Convolution 구조를 활용함을 비교했습니다.</p><figure class='fig'><img src='assets/img/aivs-seg-curve.jpg' alt='PSPNet vs DeepLabv3 training curves'></figure><p>문헌 연구에 그치지 않고 두 모델을 직접 학습시켜 추론 결과를 케이스별로 분석했습니다. 이미지별 mIoU를 산출한 결과, 특정 환경에서는 DeepLabv3가 PSPNet 대비 mIoU를 0.31에서 0.93으로 대폭 향상시킨 반면, 다른 환경에서는 PSPNet이 더 우수한 분할 성능을 보이는 것을 확인했습니다. 이를 통해 전체 평균 지표만으로는 드러나지 않는 모델의 구조적 특성에 따른 성능 편차를 실증적으로 입증했습니다.</p><figure class='fig'><img src='assets/img/aivs-seg-deeplab.jpg' alt='DeepLabv3 best and worst cases'></figure>"
+          "body": "<p>두 모델이 공간적 해상도(Spatial Resolution) 손실 없이 수용 영역(Receptive Field)을 확장하는 서로 다른 접근 방식을 분석했습니다. PSPNet은 다양한 스케일의 특징을 통합하는 피라미드 풀링(Pyramid Pooling) 모듈을, DeepLabv3는 필터 내 빈 공간을 두어 수용 영역을 넓히는 Atrous Convolution 구조를 활용함을 비교했습니다.</p><p>문헌 연구에 그치지 않고 두 모델을 직접 학습시켜 추론 결과를 케이스별로 분석했습니다.</p><figure class='fig'><img src='assets/img/aivs-seg-curve.jpg' alt='PSPNet vs DeepLabv3 training curves'></figure><p>이미지별 mIoU를 산출한 결과, 특정 환경에서는 DeepLabv3가 PSPNet 대비 mIoU를 0.31에서 0.93으로 대폭 향상시킨 반면, 다른 환경에서는 PSPNet이 더 우수한 분할 성능을 보이는 것을 확인했습니다. 이를 통해 전체 평균 지표만으로는 드러나지 않는 모델의 구조적 특성에 따른 성능 편차를 실증적으로 확인했습니다.</p><figure class='fig'><img src='assets/img/aivs-seg-psp.jpg' alt='PSPNet best and worst cases'></figure><figure class='fig'><img src='assets/img/aivs-seg-deeplab.jpg' alt='DeepLabv3 best and worst cases'></figure>"
         },
         {
           "h": "2. Vision Transformer · 2026.03.30",
-          "body": "<p>이미지를 고정 크기의 패치(Patch)로 분할하여 토큰화하고, 자연어 처리(NLP)의 Transformer 인코더 아키텍처를 이미지 분류에 적용하는 전 과정을 분석했습니다.</p><figure class='fig'><img src='assets/img/aivs-vit-arch.jpg' alt='ViT architecture'></figure><p>특히 데이터가 네트워크를 통과하며 겪는 차원(Dimension)의 변화를 수학적으로 추적했습니다. 패치 벡터가 선형 투영(Linear Projection)을 거쳐 임베딩되고 학습 가능한 [class] 토큰이 결합되어 197개의 토큰 시퀀스로 구성되는 과정, 12개의 헤드가 각각 64차원을 연산하여 768차원으로 병합되는 Multi-head Attention 구조, 768 → 3072 → 768 차원으로 이어지는 FFN(Feed Forward Network)의 비선형 변환, 그리고 최종적으로 [class] 토큰을 활용한 MLP 분류 헤드까지의 내부 연산 파이프라인을 체계적으로 정리했습니다.</p><figure class='fig'><img src='assets/img/aivs-vit-dim.jpg' alt='ViT dimension tracking'></figure><p>ImageNet-200 데이터셋을 대상으로 사전학습 활용 방식을 세 가지로 나누어 비교 실험을 수행했습니다.</p><table class='tbl'><thead><tr><th>Method</th><th>Epochs</th><th>Base LR</th><th>Best Top-1</th></tr></thead><tbody><tr><td>Training from Scratch</td><td>100</td><td>5e-4</td><td>57.11%</td></tr><tr><td>Full Fine-tuning</td><td>50</td><td>1e-4</td><td>87.38%</td></tr><tr><td>Linear Probing</td><td>50</td><td>1e-3</td><td>91.96%</td></tr></tbody></table><figure class='fig'><img src='assets/img/aivs-vit-ft-lp.jpg' alt='Full fine-tuning and linear probing curves'></figure>"
+          "body": "<p>이미지를 고정 크기의 패치(Patch)로 분할하여 토큰화하고, 자연어 처리(NLP)의 Transformer 인코더 아키텍처를 이미지 분류에 적용하는 전 과정을 분석했습니다.</p><figure class='fig'><img src='assets/img/aivs-vit-arch.jpg' alt='Vision Transformer architecture'></figure><p>특히 데이터가 네트워크를 통과하며 겪는 차원(Dimension)의 변화를 수학적으로 추적했습니다. 패치 벡터가 선형 투영(Linear Projection)을 거쳐 임베딩되고 학습 가능한 [class] 토큰이 결합되어 197개의 토큰 시퀀스로 구성되는 과정, 12개의 헤드가 각각 64차원을 연산하여 768차원으로 병합되는 Multi-head Attention 구조, 768 → 3072 → 768 차원으로 이어지는 FFN(Feed Forward Network)의 비선형 변환, 그리고 최종적으로 [class] 토큰을 활용한 MLP 분류 헤드까지의 내부 연산 파이프라인을 체계적으로 정리했습니다.</p><p>ImageNet-200 데이터셋을 대상으로 사전학습 활용 방식을 세 가지로 나누어 비교 실험을 수행했습니다.</p><table class='tbl'><thead><tr><th>Method</th><th class='num'>Epochs</th><th class='num'>Base LR</th><th class='num'>Best Top-1</th></tr></thead><tbody><tr><td>Training from Scratch</td><td class='num'>100</td><td class='num'>5e-4</td><td class='num'>57.11%</td></tr><tr><td>Full Fine-tuning</td><td class='num'>50</td><td class='num'>1e-4</td><td class='num'>87.38%</td></tr><tr><td>Linear Probing</td><td class='num'>50</td><td class='num'>1e-3</td><td class='num'><strong>91.96%</strong></td></tr></tbody></table><figure class='fig'><img src='assets/img/aivs-vit-scratch.jpg' alt='Training from scratch'></figure><figure class='fig'><img src='assets/img/aivs-vit-ft-lp.jpg' alt='Full fine-tuning and linear probing'></figure>"
         }
       ],
       "take": "<p>PSPNet과 DeepLabv3의 추론 결과를 비교하며, 데이터셋 전체의 평균 평가지표(Mean mIoU)에만 의존할 경우 모델의 실제 강점과 약점을 파악하기 어렵다는 점을 확인했습니다. 특정 장면(Scene)에서의 압도적인 성능이 다른 환경에서의 실패를 가릴 수 있다는 사실을 통해, 거시적인 통계 수치 이면에 존재하는 실패 케이스(Failure Case)를 미시적으로 들여다보는 정성적 평가의 중요성을 체득했습니다.</p><p>ViT 실험에서는 세 가지 방식 중 Linear Probing이 91.96%로 가장 우수한 성능을 보였고, Full Fine-tuning은 87.38%에 그쳤습니다. 이는 백본 전체를 업데이트할 경우, 오히려 기존에 학습된 유의미한 특징이 훼손되는 망각 현상이 발생함을 시사합니다. 결론적으로 ImageNet-200 규모의 데이터셋에서는 파라미터 업데이트를 최소화하여 사전학습된 표현을 온전히 보존하는 것이 최종 성능을 결정짓는 핵심 요인이었습니다.</p>"
@@ -288,7 +284,7 @@
         },
         {
           "h": "주요 연구 내용",
-          "body": "<p>역전파(Backpropagation), 최적화 알고리즘, 신경망 아키텍처 등 딥러닝의 근간이 되는 핵심 이론을 체계적으로 재확립했습니다. 이를 바탕으로 'Attention Is All You Need' 논문을 Self-attention 매커니즘과 Encoder-Decoder 구조를 중심으로 심층 분석했으며, 대규모 언어 모델(LLM)의 패러다임이 RNN 계열에서 Transformer 아키텍처로 전환되는 기술적 발전 과정을 추적했습니다.</p><figure class='fig'><img src='assets/img/iot-transformer.jpg' alt='Transformer encoder-decoder architecture'></figure><figure class='fig'><img src='assets/img/iot-attention.jpg' alt='Scaled dot-product attention'></figure>"
+          "body": "<p>역전파(Backpropagation), 최적화 알고리즘, 신경망 아키텍처 등 딥러닝의 근간이 되는 핵심 이론을 체계적으로 재확립했습니다. 이를 바탕으로 'Attention Is All You Need' 논문을 Self-attention 매커니즘과 Encoder-Decoder 구조를 중심으로 심층 분석했으며, 대규모 언어 모델(LLM)의 패러다임이 RNN 계열에서 Transformer 아키텍처로 전환되는 기술적 발전 과정을 추적했습니다.</p><figure class='fig'><img src='assets/img/iot-transformer.jpg' alt='Transformer architecture'><figcaption>Vaswani et al., <em>Attention Is All You Need</em>, NeurIPS 2017, Figure 1</figcaption></figure>"
         }
       ],
       "take": "<p>본 연구 기간 동안 심층적으로 분석했던 Self-attention 메커니즘은 이후 수행한 다양한 컴퓨터 비전 및 로보틱스 프로젝트의 핵심 기반이 되었습니다.</p><p>자연어 처리(NLP) 도메인에서 출발한 연산 구조가 이후 Journal Club에서 다룬 분할 모델(FCN, PSPNet)의 한계를 극복하는 ViT의 이미지 패치 처리로, 나아가 AGA 랩에서 연구한 DINO-WM의 상태 궤적(State Trajectory) 모델링으로 확장 적용되는 과정을 직접 경험했습니다. 이를 통해 딥러닝 아키텍처의 범용성(Universality)과 모달리티 간의 확장성을 깊이 통찰하는 계기가 되었습니다.</p>"
@@ -296,46 +292,41 @@
     {
       "id": "llm-detect",
       "lane": "project",
-      "title": "Hybrid Detection System for Korean AI-Generated Text",
-      "titleSub": "via Robust Pseudo-Labeling",
+      "title": "Korean AI-Generated Text Detection under Noisy Labels and Class Imbalance",
       "org": "Large Language Models & ChatGPT (2025-2) · 팀원 · 모델링",
       "start": "2025-09",
       "end": "2025-12",
       "dateLabel": "2025.09 – 2025.12",
-      "summary": "문서 단위의 라벨 오염(Noisy Label) 및 11:1 수준의 극심한 클래스 불균형이 복합적으로 존재하는 데이터 환경에서 한국어 AI 생성 텍스트 판별 모델을 성공적으로 구축했습니다.",
+      "summary": "문서 라벨을 문단 단위 데이터에 상속하는 과정에서 발생한 라벨 노이즈와 약 11:1의 클래스 불균형이 존재하는 환경에서 한국어 AI 생성 텍스트 판별 모델을 구축하고 비교했습니다.",
       "tags": [
-        "PU Learning",
+        "Label Noise",
         "KoBERT",
         "Kanana",
         "LoRA"
       ],
-      "hero": {
-        "src": "assets/img/llm-phase12.jpg",
-        "invert": false
-      },
       "sections": [
         {
           "h": "개요",
-          "body": "<p>문서 단위의 라벨 오염(Noisy Label)과 극심한 클래스 불균형(11:1)이 존재하는 데이터 환경에서 한국어 AI 생성 텍스트 판별 모델을 구축했습니다. 최종적으로 Kanana 단일 모델 기준 F1 0.9644, 앙상블 모델 기준 Precision 0.9882를 달성했습니다.</p>"
+          "body": "<p>문서 라벨을 문단 단위 데이터에 상속하는 과정에서 발생한 라벨 노이즈와 약 11:1의 클래스 불균형이 존재하는 환경에서 한국어 AI 생성 텍스트 판별 모델을 구축하고 비교했습니다. 최종적으로 Kanana 단일 모델에서 Macro F1 0.9644를 기록했으며, Soft Voting은 Macro Precision 0.9882를 기록했습니다.</p>"
         },
         {
-          "h": "문제 정의 — 문서 단위의 라벨 오염 및 불균형",
-          "body": "<p>제공된 97,172건의 문서 데이터셋은 문서 내에 AI가 생성한 문장이 단 하나만 포함되어 있어도 문서 전체에 AI 라벨이 부여되는 방식으로 구축되어 있었습니다. 이로 인해 대다수의 사람이 작성한 문장까지 AI 데이터로 학습되는 문제가 발생했습니다.</p><figure class='fig'><img src='assets/img/llm-dist.jpg' alt='Class distribution and text length'></figure><p>또한, Human 라벨이 91.8%, AI 라벨이 8.2%(약 11:1)로 극심한 클래스 불균형을 이루고 있었습니다. 문제는 소수 클래스인 AI 라벨 문서 내에도 다수의 사람 문장이 섞여 있어(문서 단위 라벨링의 오류), 모델 학습에 치명적인 노이즈로 작용한다는 점이었습니다. 이를 해결하기 위해 문서를 개행 기준으로 분할하여 총 1,226,364개의 문단 데이터를 확보했으며, 10자 미만의 노이즈 데이터를 필터링하고 Data Leakage를 방지하기 위해 문서 ID를 기준으로 학습 및 검증 세트를 철저히 분리했습니다.</p><figure class='fig'><img src='assets/img/llm-expand.jpg' alt='Data expansion by class'></figure>"
+          "h": "문제 정의 — 라벨 상속으로 발생한 노이즈와 클래스 불균형",
+          "body": "<p>제공된 데이터에는 문서 단위의 Human/AI 라벨이 부여되어 있었습니다. 이를 개행 기준의 문단으로 분할하면서 원 문서의 라벨을 모든 문단에 상속했기 때문에, AI 라벨 문서에 포함된 인간 작성 구간까지 AI 문단으로 표시될 가능성이 발생했습니다. 이로 인해 일부 인간 작성 문단이 AI 데이터로 학습될 수 있는 라벨 노이즈 문제가 발생했습니다.</p><figure class='fig'><img src='assets/img/llm-dist.jpg' alt='Original class distribution'></figure><p>또한 Human 라벨이 91.8%, AI 라벨이 8.2%(약 11:1)로 극심한 클래스 불균형을 이루고 있었습니다. 문서를 개행 기준으로 분할하고 10자 미만 문단을 제거하여 총 1,226,362개의 문단 데이터를 구성했습니다. 첨부 코드에서는 클래스 비율을 유지하는 행 단위 90:10 층화 분할을 적용했습니다. 다만 문서 ID 기반 Group Split이 구현되지 않아 동일 문서에서 파생된 문단이 학습·검증 세트에 함께 포함될 수 있다는 한계가 있습니다.</p><figure class='fig'><img src='assets/img/llm-expand.jpg' alt='Paragraph-level data distribution after document splitting'></figure>"
         },
         {
           "h": "초기 접근 방식 및 한계",
-          "body": "<p>초기에는 두 가지 접근 방식을 시도했으나 한계를 확인하고 방향을 수정했습니다. 첫째, 13가지 언어학적 특징(Linguistic Features)을 추출하여 KoBERT 임베딩과 결합하는 하이브리드 방식을 시도했습니다. 하지만 Transformer 구조가 이미 내부적으로 고차원 문맥 특징을 인코딩하고 있어, 수동으로 추출한 특징을 주입하는 것이 오히려 End-to-End 학습을 저해하며 연산 비용만 증가시켰습니다.</p><p>둘째, Max-Pooling 기반의 MIL(Multiple Instance Learning)을 도입하여 문서 내 가장 강력한 AI 신호만을 추출해 라벨 노이즈를 우회하고자 했습니다. 그러나 국소적 문맥이 손실되고 극심한 불균형 상태에서 다수 클래스로 편향될 위험이 커 적용을 중단했습니다. 결론적으로, 모델의 복잡도를 높이는 대신 데이터 품질 자체를 개선하는 방향으로 선회했습니다.</p>"
+          "body": "<p>초기에는 문장 길이, 어휘 다양성, 품사 비율 등 13개 언어학적 특징을 별도로 추출하고, 이를 KoBERT의 <em>[CLS]</em> 임베딩과 결합하는 하이브리드 구조를 시도했습니다. 통계적 문체 특징과 Transformer의 문맥 표현을 함께 활용하려는 접근이었지만, 라벨 노이즈가 남아 있는 상태에서는 특징 결합만으로 문제를 해결하기 어려웠으며, 대규모 문단 전체에 KoBERT 임베딩을 계산하는 비용도 발생했습니다. 다만 하이브리드 구조의 순수한 효과를 분리한 ablation은 수행하지 못했습니다.</p><p>둘째, 긴 문서를 512토큰 청크로 나누고 시작점을 128토큰씩 이동시키는 Sliding Window MIL을 적용했습니다. 각 청크를 <em>klue/roberta-small</em>로 처리한 뒤 가장 높은 AI 로짓을 문서 수준 판단에 사용하는 방식이었습니다. 청크 내부 문맥은 self-attention으로 처리할 수 있지만, 서로 다른 청크 사이의 전역 문맥을 직접 연결하지 못하고 문서마다 Transformer를 여러 번 호출해야 한다는 한계가 있었습니다. 또한 클래스 불균형과 문서 라벨 노이즈가 그대로 남아 있어 Human 편향 가능성을 완전히 해결하지 못해 최종 방법으로 채택하지 않았습니다.</p><p>결론적으로 모델의 복잡도를 높이는 대신 데이터 품질 자체를 개선하는 방향으로 선회했습니다.</p>"
         },
         {
-          "h": "해결 방안 — 보수적 정제 전략 및 모델 앙상블",
-          "body": "<p>반복적인 재학습을 배제하고 신뢰도 기반의 단일 패스(Single-pass) 정제 파이프라인을 설계했습니다. 핵심은 비대칭적 손실(Asymmetric Loss) 적용이었습니다. 사람이 작성한 글을 AI로 오분류할 경우 데이터셋의 신뢰도가 크게 훼손되지만, AI 글을 놓치는 것은 정제 과정에서 수용 가능한 손실로 판단했습니다.</p><p>일반적으로 클래스 불균형 해소를 위해 소수 클래스에 가중치를 부여하지만, 본 프로젝트에서는 '사람이 쓴 글을 AI로 오분류하는 치명적 오류(False Positive)를 방지한다'는 목적을 최우선으로 두었습니다. 이를 위해 오히려 다수 클래스인 Human에 2배의 가중치를 부여(Weighted Cross Entropy)하여 AI 판별 결정 경계(Decision Boundary)가 매우 보수적이고 엄격하게 형성되도록 유도했습니다. 동시에 학습 데이터 자체의 불균형을 완화하기 위해 다수 클래스를 2:1 비율로 다운샘플링하는 전략을 병행하여 밸런스를 맞췄습니다.</p><p>또한 필터 모델의 검증 정확도 목표를 의도적으로 60~70% 수준으로 하향 설정했습니다. 모델이 90% 이상의 정확도를 보일 경우, 이는 오염된 라벨을 그대로 과적합(Overfitting)하여 모사하고 있음을 의미하기 때문입니다.</p><figure class='fig'><img src='assets/img/llm-transition.jpg' alt='Label transition matrix'></figure><p>최종 분류 단계에서는 문법 구조 파악에 강점이 있는 KoBERT와 긴 문맥(Long-context) 이해에 뛰어난 Kanana 2.1B를 Soft Voting 방식으로 결합했습니다. Kanana의 경우 생성 헤드(Generation Head)를 제거하고 이진 분류 헤드를 부착했으며, q_proj 및 v_proj에 LoRA(rank 8, alpha 16)를 적용하여 파인튜닝 파라미터를 전체의 1% 미만으로 최적화했습니다.</p><figure class='fig'><img src='assets/img/llm-phase3.jpg' alt='Heterogeneous LLM ensemble'></figure>"
+          "h": "해결 방안 — 비대칭 재라벨링과 모델 앙상블",
+          "body": "<p>KoBERT 필터 모델을 noisy label 데이터로 3 epoch 학습한 뒤, 전체 문단을 한 번 재평가하는 단일 패스 정제 파이프라인을 적용했습니다. 원래 Human 라벨은 유지하고, 원래 AI 라벨 문단만 필터 모델의 예측에 따라 변경하는 비대칭 재라벨링 방식입니다.</p><figure class='fig'><img src='assets/img/llm-phase12.jpg' alt='Data preprocessing and label refinement pipeline'></figure><p>핵심은 비대칭적인 재라벨링 정책과 클래스 가중치가 적용된 Weighted Cross Entropy였습니다. Human 클래스의 오분류 손실에 2배의 가중치를 부여했습니다. 이는 Human 문단을 AI로 판단하는 오류에 더 큰 비용을 두려는 설정으로 해석할 수 있습니다. 동시에 Human 표본을 AI 표본의 2배만 사용하도록 다운샘플링하여 원래 약 11:1이었던 불균형을 2:1로 완화했습니다. 다만 이 조합의 효과를 개별적으로 검증한 ablation은 수행하지 못했습니다.</p><p>필터 KoBERT의 검증 정확도는 약 0.62 수준이었습니다. 다만 이때의 검증 라벨 역시 사람이 재검수한 정답이 아니라 원 문서에서 상속된 noisy label이므로, 해당 정확도만으로 실제 정제 성능을 평가하기는 어렵습니다. 정확한 검증을 위해서는 사람이 확인한 clean subset에서 재라벨링 Precision과 Recall을 측정할 필요가 있습니다.</p><figure class='fig'><img src='assets/img/llm-transition.jpg' alt='Label transition matrix'></figure><p>정제된 데이터에서 비교적 경량인 encoder 기반 KoBERT와 더 큰 모델 용량을 가진 decoder 기반 Kanana 1.5 2.1B를 각각 학습하고, 두 모델의 클래스 확률을 평균하는 Soft Voting을 적용했습니다. Kanana는 Sequence Classification 구조로 불러와 Human/AI 두 개의 로짓을 출력하는 분류 헤드를 구성했습니다. <em>q_proj</em>와 <em>v_proj</em>에 LoRA(r=8, α=16)를 적용하고 분류 헤드를 함께 학습하여 전체 파라미터를 파인튜닝하는 것보다 학습 가능한 파라미터 수와 메모리 부담을 줄였습니다.</p><figure class='fig'><img src='assets/img/llm-phase3.jpg' alt='Heterogeneous transformer ensemble'></figure>"
         },
         {
-          "h": "결과 분석 — 목적에 따른 모델 최적화",
-          "body": "<table class='tbl'><thead><tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th></tr></thead><tbody><tr><td>KoBERT</td><td>0.9755</td><td>0.4877</td><td>0.5000</td><td>0.4938</td></tr><tr><td>Kanana 2.1B</td><td>0.9966</td><td>0.9693</td><td>0.9596</td><td>0.9644</td></tr><tr><td>Soft Voting</td><td>0.9934</td><td>0.9882</td><td>0.8715</td><td>0.9216</td></tr></tbody></table><p>성능 평가 결과, KoBERT는 97.55%의 높은 Accuracy를 기록했으나 F1 Score는 0.4938에 불과했습니다. 이는 모델이 클래스 불균형을 극복하지 못하고 다수 클래스(Human)로 예측이 편향되어 실제 AI 텍스트를 제대로 탐지하지 못하는 전형적인 사례로, 단일 지표(Accuracy)가 가지는 맹점을 명확히 보여줍니다.</p><p>반면 앙상블 모델은 Kanana 단일 모델 대비 F1 Score와 Recall은 다소 하락(0.8715)했으나, Precision은 0.9882로 가장 우수한 성능을 기록했습니다. 이는 성능이 상대적으로 낮은 KoBERT가 보수적인 제동 장치 역할을 수행하여, 두 모델이 높은 확신을 가질 때만 AI로 분류하도록 설계되었기 때문입니다.</p><p>결론적으로 단일 최고 성능의 모델을 고집하기보다, 탐지율(Recall)이 중요한 환경에서는 Kanana 단일 모델을, 표절 검사와 같이 오탐(False Positive) 방지가 최우선인 환경에서는 앙상블 모델을 채택하는 유연한 솔루션을 도출했습니다.</p>"
+          "h": "결과 분석 — 목적에 따른 모델 선택",
+          "body": "<table class='tbl'><thead><tr><th>Model</th><th class='num'>Accuracy</th><th class='num'>Macro Precision</th><th class='num'>Macro Recall</th><th class='num'>Macro F1</th></tr></thead><tbody><tr><td>KoBERT</td><td class='num'>0.9755</td><td class='num'>0.4877</td><td class='num'>0.5000</td><td class='num'>0.4938</td></tr><tr><td>Kanana 1.5 2.1B</td><td class='num'>0.9966</td><td class='num'>0.9693</td><td class='num'>0.9596</td><td class='num'>0.9644</td></tr><tr><td>Soft Voting</td><td class='num'>0.9934</td><td class='num'>0.9882</td><td class='num'>0.8715</td><td class='num'>0.9216</td></tr></tbody></table><p>성능 평가 결과, KoBERT는 97.55%의 높은 Accuracy를 기록했으나 Macro F1은 0.4938에 불과했습니다. 이는 모델이 클래스 불균형을 극복하지 못하고 다수 클래스(Human)로 예측이 편향되어 실제 AI 텍스트를 제대로 탐지하지 못하는 전형적인 사례로, 단일 지표(Accuracy)가 가지는 맹점을 명확히 보여줍니다.</p><p>앙상블은 Kanana 단일 모델보다 Macro Recall이 0.9596에서 0.8715로, Macro F1이 0.9644에서 0.9216으로 하락했지만 Macro Precision은 0.9693에서 0.9882로 상승했습니다. KoBERT가 대부분의 입력을 Human으로 예측했기 때문에, KoBERT의 Human 편향 확률이 평균 과정에서 Kanana의 일부 AI 예측을 약화시켰을 가능성이 있습니다. 그 결과 앙상블의 판단이 더 보수적으로 변하면서 Macro Precision은 높아지고 Macro Recall은 낮아진 것으로 해석할 수 있습니다.</p><p>AI 생성 문단을 최대한 놓치지 않는 것이 중요하다면 Macro Recall과 Macro F1이 가장 높은 Kanana 단일 모델이 더 적합합니다. 반면 AI 판정에 따른 불이익이 크고 보수적인 판단이 필요한 환경에서는 앙상블이나 별도의 결정 임계값 조정을 검토할 수 있습니다. 다만 실제 False Positive를 비교하려면 AI 클래스별 Precision과 confusion matrix가 추가로 필요합니다.</p>"
         }
       ],
-      "take": "<p>표면적으로 우수한 97.55%의 정확도가 실제 문제 해결에는 큰 의미가 없을 수 있다는 점을 실무 데이터를 통해 깊이 체감했습니다. 단일 평가지표의 위험성을 이론적으로 인지하는 것을 넘어, 실제 성능 지표 간의 트레이드오프(Trade-off)를 경험하며 다각적인 평가의 중요성을 깨달았습니다.</p><p>특히 오염된 라벨 환경에서 검증 정확도를 의도적으로 낮게 설정하는 역발상 접근은, '단순히 숫자가 높은 모델'이 아닌 '현실의 문제를 정확히 진단하고 해결하는 모델'을 설계하는 귀중한 경험이 되었습니다.</p>"
+      "take": "<p>표면적으로 우수한 97.55%의 정확도가 실제 문제 해결에는 큰 의미가 없을 수 있다는 점을 실무 데이터를 통해 깊이 체감했습니다. 단일 평가지표의 위험성을 이론적으로 인지하는 것을 넘어, 실제 성능 지표 간의 트레이드오프(Trade-off)를 경험하며 다각적인 평가의 중요성을 깨달았습니다.</p><p>특히 오염 가능성이 있는 라벨로 계산한 검증 정확도만으로는 모델의 실제 정제 능력을 판단하기 어렵다는 점을 배웠습니다. 향후에는 문서 ID 기반 Group Split, 사람이 검수한 Clean Validation Set, Out-of-Fold 방식의 재라벨링을 적용하여 데이터 누수와 정제 모델의 자기확증 위험을 줄이고자 합니다.</p>"
     },
     {
       "id": "cv-suite",
@@ -345,35 +336,31 @@
       "start": "2025-09",
       "end": "2025-12",
       "dateLabel": "2025.09 – 2025.12",
-      "summary": "이미지 분류, 대규모 이미지 분류, 의미론적 분할 세 가지 컴퓨터 비전 핵심 과제를 팀 프로젝트로 수행했습니다. CIFAR-10 95%, Tiny ImageNet 75.41%를 달성했으며 Pascal VOC 21개 클래스 분할 모델을 구축했습니다.",
+      "summary": "이미지 분류, 대규모 이미지 분류, 의미론적 분할의 세 가지 컴퓨터 비전 과제를 팀 프로젝트로 수행했습니다. CIFAR-10 Public 95.0% / Hidden 94.0%, Tiny-ImageNet Private 75.41%, Pascal VOC 2012 Private Pixel Accuracy 74.65%를 기록했습니다.",
       "tags": [
         "ResNet",
         "CBAM",
         "DeepLab"
       ],
-      "hero": {
-        "src": "assets/img/cv-voc-result.jpg",
-        "invert": false
-      },
       "sections": [
         {
           "h": "개요",
-          "body": "<p>이미지 분류(Classification), 대규모 이미지 분류(Large-scale Classification), 그리고 의미론적 분할(Semantic Segmentation) 세 가지 컴퓨터 비전 핵심 과제를 팀 프로젝트로 수행했습니다. 최종적으로 CIFAR-10 95%, Tiny ImageNet 75.41%의 정확도(Accuracy)를 달성했으며, Pascal VOC 데이터셋을 활용해 21개 클래스에 대한 분할 모델을 구축했습니다.</p>"
+          "body": "<p>이미지 분류(Classification), 대규모 이미지 분류(Large-scale Classification), 의미론적 분할(Semantic Segmentation)의 세 가지 컴퓨터 비전 핵심 과제를 연속적으로 수행했습니다.</p><p>각 프로젝트에서는 단순히 더 복잡한 모델을 적용하기보다 <em>성능 정체의 원인을 실험적으로 분석하고, 데이터 특성·모델 구조·학습 전략 중 실제 병목이 무엇인지 파악한 뒤 개선하는 방식</em>으로 접근했습니다.</p><dl class='paperlist'><dt>CIFAR-10</dt><dd>모델의 Depth/Width 및 Residual 구조 최적화</dd><dt>Tiny-ImageNet</dt><dd>EDA 기반 데이터 증강 및 Channel·Spatial Attention 설계</dd><dt>Pascal VOC 2012</dt><dd>Pixel-level Class Imbalance와 Resolution Loss 분석 및 Segmentation 구조 최적화</dd></dl>"
         },
         {
           "h": "1. CIFAR-10 — 모델 깊이와 너비에 따른 파라미터 효율성 분석",
-          "body": "<p>초기 Baseline CNN 모델에서 82.3%의 성능 한계를 확인한 후, 네트워크 구조적 개선을 위해 ResNet 아키텍처를 도입했습니다. 특히 32×32 해상도의 저화질 이미지 환경에서 모델의 깊이(Depth)와 너비(Width)가 성능에 미치는 영향을 가설 검증 방식으로 분석했습니다.</p><p>가장 단순한 구조인 ResNet-8을 기준으로 레이어를 확장하며 실험한 결과, 상대적으로 더 깊은 구조인 ResNet-11이 더 넓은 구조의 ResNet-8과 유사한 성능을 내면서도 파라미터 수는 더 적음을 확인했습니다. 이를 통해 저해상도 이미지에서는 너비보다 깊이를 늘리는 것이 파라미터 효율성이 높다는 결론을 도출했습니다.</p><p>이후 모델의 깊이를 점진적으로 확장하며 성능 향상(ResNet-8 86.20% → ResNet-32 93.80%)을 달성했습니다. 추가적으로 학습률 스케줄러를 Step Decay에서 CosineAnnealingLR로 변경하고, Zero-padding Shortcut을 1×1 Projection으로 대체함과 동시에 Pre-activation을 적용하여 최종 정확도 95.00%를 달성했습니다.</p><figure class='fig'><img src='assets/img/cv-cifar-curve.jpg' alt='CIFAR-10 training curve'></figure>"
+          "body": "<p>초기 Basic CNN에서 전처리와 정규화, Batch Normalization, Dropout 등을 적용해 성능을 개선했지만 82.3% 부근에서 성능이 정체되는 현상을 확인했습니다. 이에 단순한 학습 설정 조정보다 architecture 자체의 개선이 필요하다고 판단해 ResNet을 도입했습니다.</p><p>32×32의 저해상도 이미지 환경에서 모델의 Depth와 Width가 성능 및 파라미터 효율성에 미치는 영향을 비교했습니다. 가장 작은 ResNet-8을 기준으로 channel 수를 증가시킨 Wider 모델과 block 수를 늘린 Deeper 모델을 비교한 결과, ResNet-8 Wider는 약 180K parameters로 88.5%, ResNet-11은 약 170K parameters로 88.4%를 기록했습니다. 유사한 정확도에서 더 적은 parameter를 사용한 결과를 바탕으로, 본 CIFAR-10 실험에서는 Width 확대보다 Depth 확대가 더 parameter-efficient한 방향이라고 판단했습니다.</p><p>이후 depth를 단계적으로 확장하며 성능 향상을 확인했습니다. ResNet-8 86.20% → ResNet-14 89.70% → ResNet-20 91.80% → ResNet-20 + Cutout 92.30% → ResNet-32 + Cutout 93.80%.</p><p>후반 최적화에서는 Zero-padding Shortcut 대신 학습 가능한 1×1 Projection Shortcut을 적용하고, Step Decay 기반 학습률 전략을 CosineAnnealingLR로 변경했습니다. 마지막으로 Residual Block을 Pre-activation 구조(BN → ReLU → Conv)로 변경해 Public Test 성능을 93.8%에서 <strong>95.0%</strong>로 향상시켰습니다.</p><p>최종 모델은 Pre-activation ResNet-32 [5,5,5]였으며 Public Test 95.0%, Hidden Test 94.0%를 기록했습니다. Baseline CNN 82.3%와 최종 Hidden Test 94.0%를 비교하면 11.7%p의 정확도 향상을 달성했습니다.</p><figure class='fig'><img src='assets/img/cv-cifar-curve.jpg' alt='CIFAR-10 training curve'></figure>"
         },
         {
-          "h": "2. Tiny ImageNet — Attention 매커니즘을 통한 공간 의존성 학습",
-          "body": "<p>200개 클래스로 구성된 10만 장 규모의 데이터셋을 활용하여, ResNet과 DenseNet 아키텍처 및 각각에 Attention 모듈을 결합한 모델들의 성능을 통제된 환경에서 비교 분석했습니다.</p><table class='tbl'><thead><tr><th>Model</th><th>Top-1</th><th>Top-5</th><th>Private</th></tr></thead><tbody><tr><td>ResNet</td><td>64.90%</td><td>86.62%</td><td>44.36%</td></tr><tr><td>ResNet + Attention</td><td>76.27%</td><td>92.77%</td><td>75.41%</td></tr><tr><td>DenseNet</td><td>48.98%</td><td>77.00%</td><td>—</td></tr><tr><td>DenseNet + Attention</td><td>51.91%</td><td>78.80%</td><td>51.99%</td></tr></tbody></table><p>실험 결과, Attention 매커니즘을 적용했을 때 ResNet의 Private Test 성능이 44.36%에서 75.41%로 대폭 향상되었습니다. 이는 이미지 해상도가 증가하고 분류 클래스가 세분화될수록, 모델이 장거리 공간 의존성(Long-range Spatial Dependency)을 효과적으로 포착하는 것이 성능에 결정적인 영향을 미침을 시사합니다. 최종적으로 Convolutional Block Attention Module(CBAM)을 결합한 ResNet 모델을 최적의 구조로 채택했습니다.</p><figure class='fig'><img src='assets/img/cv-tiny-curve.jpg' alt='Tiny ImageNet accuracy over iterations'></figure>"
+          "h": "2. Tiny-ImageNet — EDA 기반 Channel·Spatial Attention 최적화",
+          "body": "<p>200개 클래스와 207,005장의 학습 이미지로 구성된 Tiny-ImageNet 분류 문제에서는 모델을 먼저 정하기보다 <em>EDA를 모델 설계의 출발점으로 삼았습니다.</em></p><p>데이터 분석 결과 Training class distribution은 매우 균형적이었고, Train/Test의 brightness와 color distribution도 유사했으며, Saturation variation이 상대적으로 컸고, 객체가 이미지 중앙에 집중되는 Strong Center Bias가 확인되었습니다. 이를 바탕으로 Color Jitter, Horizontal Flip, Rotation, Random Crop, Cutout 등의 augmentation을 구성하고 데이터셋의 channel별 mean/std를 이용해 Z-score normalization을 적용했습니다.</p><table class='tbl'><thead><tr><th>Model</th><th class='num'>Top-1</th><th class='num'>Top-5</th><th class='num'>Private</th></tr></thead><tbody><tr><td>ResNet</td><td class='num'>64.90%</td><td class='num'>86.62%</td><td class='num'>44.36%</td></tr><tr><td>ResNet + Attention</td><td class='num'>76.27%</td><td class='num'>92.77%</td><td class='num'><strong>75.41%</strong></td></tr><tr><td>DenseNet</td><td class='num'>48.98%</td><td class='num'>77.00%</td><td class='num'>—</td></tr><tr><td>DenseNet + Attention</td><td class='num'>51.91%</td><td class='num'>78.80%</td><td class='num'>51.99%</td></tr></tbody></table><p>발표자료 내부에서 Public Top-1 수치가 다른 페이지와 일치하지 않아, 최종 모델 평가는 일관되게 기록된 Private Test 75.41%를 기준으로 정리했습니다.</p><p>Attention module 선정에서는 Tiny-ImageNet의 200개 클래스를 구분하기 위한 Channel Selectivity와 EDA에서 확인한 Center Bias에 대응하기 위한 Spatial Focus가 모두 필요하다고 판단했습니다. SE(Squeeze-and-Excitation)는 Channel Attention만 제공하고 spatial information을 직접 활용하지 않기 때문에 제외했으며, Channel과 Spatial Attention을 모두 활용하는 BAM과 CBAM을 비교했습니다.</p><p>최종적으로 Channel Attention → Spatial Attention 순으로 feature를 순차적으로 refinement하는 CBAM을 선택했습니다. 또한 모든 layer에 Attention을 적용하기보다, 고수준 semantic feature가 형성되는 후반 stage를 중심으로 배치해 계산량 증가를 제한했습니다. ResNet 계열 비교에서는 CBAM을 결합한 모델이 Plain ResNet보다 높은 성능을 보였으며, 최종적으로 ResNet + CBAM이 Private Test 75.41%로 가장 높은 결과를 기록해 최종 모델로 선정되었습니다.</p><figure class='fig'><img src='assets/img/cv-tiny-curve.jpg' alt='Tiny-ImageNet accuracy over iterations'></figure>"
         },
         {
-          "h": "3. Pascal VOC — 데이터 불균형 규명 및 정성적 평가 지표 도입",
-          "body": "<p>학습 1,464장, 테스트 449장 규모의 소규모 데이터셋을 활용하여 21개 클래스(배경 포함)에 대한 Semantic Segmentation을 수행했습니다.</p><p>초기 실험에서 FCN(68.12%), U-Net(69.35%), ResU-Net(68.95%) 등 아키텍처와 무관하게 픽셀 정확도(Pixel Accuracy)가 71% 미만으로 수렴하는 현상을 확인했습니다. 원인 분석 결과, 해당 수치가 영상 내 70% 비중을 차지하는 '배경' 클래스만을 예측했을 때의 기대 정확도와 일치함을 발견했습니다. 즉, 성능 정체의 원인이 모델 구조가 아닌 극심한 클래스 불균형과 단일 평가 지표의 한계에 있음을 규명했습니다.</p><p>이를 해결하기 위해 데이터 전처리 파이프라인을 전면 수정했습니다. 256×256 리사이징 시 발생하는 소형 객체 정보 손실을 방지하기 위해, 원본 종횡비를 유지하며 512×512 캔버스에 패딩하는 방식을 적용하고 데이터셋 고유의 정규화(Normalization) 파라미터를 직접 산출하여 적용했습니다.</p><p>모델 선정 시, ResU-Net이 픽셀 정확도 80.67%로 DeepLab(74.65%)보다 정량적 지표는 높았으나 최종적으로 DeepLab을 채택했습니다. 픽셀 정확도가 배경 클래스에 의해 과대평가(Overestimation)되는 한계를 인지하고 정성적 분석을 병행한 결과, DeepLab 모델이 객체의 경계를 더욱 선명하게 분할하고 내부를 균일하게 추론함을 확인했기 때문입니다. DeepLab의 정량 지표 하락은 512×512 변환 과정의 정규화 구현 오류에서 기인한 것으로 최종 파악했습니다.</p>"
+          "h": "3. Pascal VOC — 데이터 불균형 진단 및 정량·정성 평가 병행",
+          "body": "<p>Pascal VOC 2012의 학습 이미지 1,464장과 Public Test 449장을 활용해 Background를 포함한 21개 클래스의 Semantic Segmentation을 수행했습니다.</p><p>초기에는 서로 다른 segmentation architecture를 비교했습니다. FCN 68.12%, U-Net 69.35%, ResU-Net 68.95%. 구조가 서로 다른 모델인데도 모두 약 68~69%의 유사한 Pixel Accuracy에서 정체됐습니다. 특히 이 성능이 Training Set에서 Background가 차지하는 pixel 비율인 <strong>69.35%와 유사하다는 점</strong>에 주목했습니다.</p><p>이에 단순히 architecture가 부족한 것이 아니라 데이터 특성과 학습 방식에 공통적인 병목이 있을 가능성을 가설로 세우고 EDA를 수행했습니다. 분석 결과 Background 69.35%, 가장 희귀한 class 0.29%로 두 class 간 빈도 차이가 약 239배에 달하는 극심한 pixel-level class imbalance를 확인했습니다. 또한 원본 이미지의 평균 크기가 약 386×474인 반면 초기 학습에서는 256×256으로 강제 resize하고 있었고, 데이터 내 객체의 약 41.6%가 Small Object라는 점을 바탕으로 해상도 축소 과정에서 segmentation에 중요한 작은 객체와 boundary detail이 손실될 가능성을 확인했습니다.</p><p><strong>Loss와 Resolution 중심의 전략 전환.</strong> Standard Cross Entropy 대신 Weighted Cross Entropy, Focal Loss, Dice Loss를 실험해 class imbalance와 object-region overlap 문제에 대응했습니다. 또한 input resolution을 256 → 384 → 512로 점진적으로 높여 spatial detail을 보존했습니다. 최종 preprocessing에서는 이미지를 512×512로 강제로 변형하지 않고 원본 aspect ratio를 유지한 채 최대한 크게 resize한 뒤 남는 공간을 512×512 canvas에 padding하는 방식을 적용했으며, EDA를 통해 Pascal VOC 데이터셋의 BGR channel별 mean/std를 직접 산출해 normalization에 활용했습니다.</p><p><strong>DeepLabv3+-Inspired Final Architecture.</strong> 최종 모델은 ResNet50 + CBAM + ASPP + Long Filter + Decoder 구조로 설계했습니다. ResNet50을 feature extractor로 사용하고 주요 backbone stage에 CBAM을 적용해 Channel·Spatial Attention을 수행했습니다. Backbone의 high-level feature 뒤에는 ASPP(Atrous Spatial Pyramid Pooling)를 배치해 서로 다른 dilation rate의 convolution을 병렬로 적용하고 다양한 크기의 receptive field에서 multi-scale context를 추출하도록 구성했습니다. 또한 ASPP 내부에 1×7 convolution과 7×1 convolution을 별도의 Long Filter branch로 추가해 수평·수직 방향으로 길게 형성된 객체 특징을 보완했습니다.</p><p>DeepLab 계열에서 다음과 같은 성능 변화를 확인했습니다. DeepLab + WCE(256×256) 65.92% → DeepLab + WCE + Dice(512×512) 68.45% → DeepLab + Long Filter(512×512) 72.93%. 최종적으로 Public Test 72.93%, Private Test 74.65% Pixel Accuracy를 기록했습니다.</p><p><strong>Pixel Accuracy만으로 모델을 선택하지 않은 이유.</strong> Private Test에서는 ResU-Net이 80.67%로 DeepLab의 74.65%보다 높은 Pixel Accuracy를 기록했습니다. 그러나 Pascal VOC Training Set의 약 69%가 Background이기 때문에 Pixel Accuracy는 Background를 많이 맞히는 모델의 성능을 과대평가할 수 있습니다. 이에 정량 지표만으로 최종 모델을 선정하지 않고, 저장된 prediction mask를 직접 비교하는 qualitative evaluation도 병행했습니다.</p><figure class='fig'><img src='assets/img/cv-voc-result.jpg' alt='Pascal VOC segmentation results'></figure><p>ResU-Net을 포함한 일부 모델에서는 객체 경계가 모호하거나 내부 영역에 불규칙한 hole이 발생한 반면, DeepLab 기반 모델은 상대적으로 더 선명한 object boundary와 더 안정적으로 채워진 object interior를 보였습니다. 이러한 결과를 바탕으로 Pixel Accuracy는 낮더라도 실제 segmentation 품질이 더 안정적이라고 판단한 DeepLab 기반 구조를 최종 모델로 선택했습니다.</p><p>발표 단계의 사후 분석에서는 512×512 resolution으로 preprocessing pipeline을 변경하는 과정에서 발생한 Standard Normalization 구현 오류를 DeepLab과 ResU-Net 간 정량 성능 격차의 주요 원인 중 하나로 분석했습니다. 따라서 해당 결과는 normalization pipeline의 정합성까지 포함해 모델 성능을 해석해야 한다는 점을 확인한 사례이기도 했습니다.</p>"
         }
       ],
-      "take": "<p>세 가지 컴퓨터 비전 과제를 연속적으로 수행하며, 성능 정체의 근본 원인이 단순히 모델 구조의 한계에만 있지 않음을 실증적으로 경험했습니다. CIFAR-10에서는 학습 스케줄링과 아키텍처의 디테일(Shortcut 설계)이, Tiny ImageNet에서는 공간 의존성을 포착하는 Attention 매커니즘이, Pascal VOC에서는 데이터 불균형 및 전처리 파이프라인의 정합성이 성능 결정의 핵심 변수였습니다.</p><p>특히 Pascal VOC 분할 과제에서 정량적 지표가 더 낮은 모델을 최종 선택한 경험은, 단일 평가 지표의 맹점을 경계하고 데이터의 특성과 정성적 결과물 분석을 종합적으로 고려하는 머신러닝 엔지니어로서의 판단력을 기르는 중요한 계기가 되었습니다.</p>"
+      "take": "<p>세 가지 컴퓨터 비전 과제를 연속적으로 수행하면서, 성능 정체의 원인이 항상 모델 구조 자체에 있는 것은 아니라는 점을 실험적으로 경험했습니다. CIFAR-10에서는 Depth/Width 선택과 Residual Shortcut, Learning Rate Scheduling과 같은 architecture와 optimization detail이 성능에 큰 영향을 주었습니다. Tiny-ImageNet에서는 데이터의 색상·공간적 특성을 EDA로 분석하고 이를 Channel·Spatial Attention과 augmentation 설계에 반영하는 과정이 중요했습니다. Pascal VOC에서는 서로 다른 모델이 동일한 수준에서 정체되는 현상에서 출발해 pixel-level class imbalance, input resolution, loss function, preprocessing pipeline의 정합성까지 성능 병목의 범위를 확장해 분석했습니다.</p><p>특히 Pascal VOC 프로젝트에서 정량 지표가 더 높은 모델을 그대로 선택하지 않고 실제 prediction mask의 boundary와 region quality까지 함께 비교한 경험을 통해, 단일 metric만으로 모델 성능을 판단하기보다 데이터 분포와 평가 지표의 특성을 함께 이해해야 한다는 점을 배웠습니다. 세 프로젝트를 통해 단순히 새로운 모델을 적용하는 것보다, 성능 정체 현상을 관찰하고 가설을 세운 뒤 실험을 통해 병목을 좁혀가는 과정 자체가 모델 최적화의 핵심이라는 점을 경험했습니다.</p>"
     },
     {
       "id": "agri-price",
@@ -384,59 +371,51 @@
       "start": "2025-09",
       "end": "2025-12",
       "dateLabel": "2025.09 – 2025.12",
-      "summary": "6개 출처에서 수집한 256주 분량의 다중 시계열 데이터를 활용하여 감귤 도매가 예측 모델을 구축했습니다.",
+      "summary": "가격·공급·기상·생산·수출·소비 등 6개 데이터 소스를 통합하여 256주 분량의 시계열 데이터셋을 구축하고, 감귤 도매가격 예측 모델을 개발했습니다.",
       "tags": [
         "LightGBM",
         "Stacking",
         "Time Series"
       ],
-      "hero": {
-        "src": "assets/img/agri-models.jpg",
-        "invert": false
-      },
       "sections": [
         {
           "h": "개요",
-          "body": "<p>6개 출처에서 수집한 256주 분량의 다중 시계열 데이터를 활용하여 제주 감귤 도매 가격 예측 모델을 구축했습니다. 스태킹 앙상블(Stacking Ensemble) 기법을 적용하여 최종적으로 예측 오차(MAPE)를 12.12%에서 10.91%로 개선하였으며, R² 0.729를 달성했습니다.</p>"
+          "body": "<p>가격·공급·기상·생산·수출·소비 등 6개 데이터 소스를 통합하여 256주 분량의 시계열 데이터셋을 구축하고, 제주 감귤 도매가격 예측 모델을 개발했습니다. 스태킹 앙상블(Stacking Ensemble) 기법을 적용하여 최종적으로 예측 오차(MAPE)를 12.12%에서 10.91%로 개선하였으며, R² 0.729를 달성했습니다.</p>"
         },
         {
           "h": "데이터 수집 및 전처리 파이프라인",
-          "body": "<p>2021년 1월부터 2025년 11월까지(총 256주)의 가격, 공급, 기상, 생산, 수출, 소비 등 6개 도메인 데이터를 주(Weekly) 단위로 병합하여 분석 환경을 구축했습니다.</p><p>전처리 과정의 핵심은 데이터 왜곡 방지와 결측치 보존이었습니다. 첫째, 경매 유찰, 폐기, 무료 나눔 등으로 인해 가격 분포를 크게 왜곡하는 '0원' 데이터(전체의 19.24%)를 이상치로 간주하여 제거했습니다. 둘째, 평균 대치법이 가져올 분포 왜곡을 방지하고자 결측치를 임의의 값으로 채우지 않았습니다. 대신 Tree 기반 모델이 결측치(NaN)를 독립적인 분기 조건으로 활용할 수 있는 특성을 이용했습니다. 그 결과, 생산량 데이터가 검증 및 테스트 구간에서 100% 결측됨에도 불구하고 LightGBM과 XGBoost 모델에서 성능 저하 없이 학습을 수행할 수 있었습니다.</p><p>시계열 데이터의 특성을 고려하여 무작위 섞기(Shuffle) 없이 시간순으로 데이터를 분할했습니다(학습 182주 / 검증 27주 / 테스트 47주). 특히 테스트 구간의 평균 가격이 학습 구간 대비 27% 높은 환경을 구성하여 모델의 미래 외삽(Extrapolation) 능력을 엄격하게 검증했습니다.</p>"
+          "body": "<p>2021년 1월부터 2025년 11월까지(총 256주)의 가격, 공급, 기상, 생산, 수출, 소비 등 6개 도메인 데이터를 주(Weekly) 단위로 병합하여 분석 환경을 구축했습니다.</p><p>전처리 과정의 핵심은 데이터 왜곡 방지와 결측치 처리였습니다. 첫째, 정상적인 시장가격을 반영하지 않는 것으로 판단한 '0원' 데이터(전체의 19.24%)를 제거했습니다. 이후 양수 가격 데이터에 대해서는 IQR 기준의 상한 Clipping을 적용하여 극단값의 영향을 완화했습니다.</p><p>둘째, 월·연 단위로 제공되는 일부 데이터에서 발생한 결측치를 일괄적인 평균값으로 대치하지 않고, 데이터의 의미와 모델 특성에 따라 처리했습니다. 수출·소비 등 관측 주기 차이로 발생한 결측치는 가능한 경우 유지하여 Tree 기반 모델의 자체 결측치 처리 기능을 활용했고, 생산량과 같이 연 단위로 제공되는 필수 정보에는 Forward Fill을 적용했습니다.</p><p>시계열 데이터의 특성을 고려하여 무작위 섞기(Shuffle) 없이 시간순으로 데이터를 분할했습니다(학습 182주 / 검증 27주 / 테스트 47주). 특히 시간순으로 분리된 테스트 구간은 평균 가격이 학습 구간보다 약 27% 높은 분포를 보여, 학습 시점과 다른 미래 가격 수준에서의 일반화 성능을 평가할 수 있었습니다.</p>"
         },
         {
           "h": "탐색적 데이터 분석 및 주요 인사이트",
-          "body": "<p>데이터 분석 결과, 계절성 지수(Seasonality Strength)가 0.792로 매우 강하게 나타났습니다. 재고가 소진되는 6월에 가격이 최고점에 달하고, 노지 감귤 출하가 집중되는 11월에 최저점을 기록하여 두 시점 간 가격 변동 폭이 116%에 달함을 확인했습니다.</p><figure class='fig'><img src='assets/img/agri-supply.jpg' alt='Monthly supply vs price trend'></figure><p>공급량과 가격 간에는 뚜렷한 음의 상관관계가 관찰되었으며, 공급이 2배 증가할 때 가격은 약 46.7% 하락하는 비탄력적 수요 구조를 정량적으로 확인했습니다. 또한, 일요일 공급량이 평일 대비 급증함에 따라 월요일 가격이 평균 12.4% 하락하는 '주말 효과(출하 집중으로 인한 단기적 시장 비효율성)'를 새롭게 발견했습니다. 반면 거시 경제 지표의 영향력은 미미하여, 감귤 도매 시장이 장기 경제 지표보다는 단기 기상 및 공급량에 민감하게 반응하는 독립적 시장임을 도출했습니다.</p><figure class='fig'><img src='assets/img/agri-corr.jpg' alt='Feature correlation with target'></figure><p>변수 중요도 분석에서는 가격 자기상관이 지배적이며, 외부 변수는 급변 구간에서 기여한다는 구조가 드러났습니다.</p>"
+          "body": "<p>데이터 분석 결과, 계절성 지수(Seasonality Strength)가 0.792로 매우 강하게 나타났습니다. 재고가 소진되는 6월에 가격이 최고점에 달하고, 노지 감귤 출하가 집중되는 11월에 최저점을 기록하여 두 시점 간 가격 변동 폭이 116%에 달함을 확인했습니다.</p><figure class='fig'><img src='assets/img/agri-supply.jpg' alt='Monthly supply vs price trend'></figure><p>공급량과 가격 간에는 뚜렷한 음의 상관관계가 관찰되었으며, 공급이 2배 증가할 때 가격은 약 46.7% 하락하는 비탄력적 수요 구조를 정량적으로 확인했습니다. 또한 일요일에는 공급량이 평일보다 크게 증가하는 패턴이 나타났으며, 일요일 평균 가격이 월요일보다 약 12.4% 낮게 형성되는 주말 효과를 확인했습니다.</p><figure class='fig'><img src='assets/img/agri-grade.jpg' alt='Monthly average price by grade'></figure><p>등급별로도 동일한 계절 패턴이 나타났으며, 상위 등급일수록 가격 변동의 절대 폭이 컸습니다. 한편 가격 변동에는 장기적인 외부 요인보다 최근 가격 추세와 공급량, 단기 기상 조건과 같은 시장 내부·단기 변수가 상대적으로 중요한 영향을 보였습니다.</p><figure class='fig'><img src='assets/img/agri-corr.jpg' alt='Feature correlation with target'></figure><p>변수 중요도 분석에서는 <em>price_roll4w</em>와 <em>price_lag1w</em> 등 과거 가격 기반 변수가 가장 높은 중요도를 보였으며, 총 공급량과 기상·소비 관련 변수들이 이를 보완하는 구조를 확인했습니다.</p>"
         },
         {
           "h": "모델링 및 스태킹 앙상블 최적화",
-          "body": "<p>LightGBM, Random Forest, XGBoost, CatBoost, SVR, LSTM 등 6개 모델의 성능을 동일 조건에서 비교했습니다. 256주라는 제한적인 표본 크기로 인해 딥러닝 기반의 LSTM(30.24%)과 SVR(27.25%)은 성능이 저조했습니다.</p><p>가장 우수한 성능을 보인 LightGBM을 베이스라인으로 설정하고, '초기 모델(MAPE 12.12%) → 하이퍼파라미터 튜닝(11.66%) → 파생 변수 생성(Feature Engineering, 11.53%) → 스태킹 앙상블(10.91%)'의 4단계 고도화 과정을 거쳤습니다. 3,072개의 Grid Search 조합은 14코어 병렬 처리를 통해 3.5분 내에 효율적으로 탐색했습니다.</p><p>특히 앙상블 과정에서 단순 평균(11.42%) 및 가중 평균(11.39%) 기법은 단일 최고 모델인 XGBoost(10.95%)보다 오히려 성능을 저하시켰습니다. 이는 선형 결합만으로는 비선형적인 오차 패턴을 상쇄할 수 없음을 의미합니다. 이를 극복하기 위해 Ridge Regression을 메타 모델로 활용하는 스태킹(Stacking) 기법을 도입했습니다. 학습된 회귀 계수에 음수(-)가 포함되어 일부 모델의 예측값을 감산하여 잔차를 능동적으로 보정하는 구조를 완성함으로써, 단일 최고 모델의 한계를 성공적으로 돌파했습니다.</p>"
+          "body": "<p>LightGBM, Random Forest, XGBoost, CatBoost, SVR, LSTM 등 6개 모델의 성능을 동일 조건에서 비교했습니다. LSTM은 256주라는 제한된 학습 데이터에서 충분한 시계열 패턴을 학습하지 못해 MAPE 30.24%로 성능이 낮았고, SVR 역시 복잡한 비선형 관계를 충분히 포착하지 못하며 27.25%의 MAPE를 기록했습니다.</p><figure class='fig'><img src='assets/img/agri-models.jpg' alt='Model performance comparison'></figure><p>초기 6개 모델 비교에서 LightGBM이 MAPE 12.12%로 가장 우수하여 단일 모델 최적화의 기준 모델로 선정했습니다. 이후 '초기 모델(12.12%) → 하이퍼파라미터 튜닝(11.66%) → 파생 변수 생성(11.53%) → 스태킹 앙상블(10.91%)'의 4단계 고도화 과정을 거쳤습니다. 3,072개의 Grid Search 조합은 14코어 병렬 처리를 통해 3.5분 내에 효율적으로 탐색했습니다.</p><p>앙상블 단계에서는 단순 평균(11.42%)과 검증 성능 기반 가중 평균(11.39%)이 단일 최고 모델인 XGBoost(10.95%)를 넘지 못했습니다. 단순히 고정된 비율로 예측값을 결합하는 것만으로는 모델 간 중복된 오차를 충분히 보정하기 어려웠기 때문입니다. 이에 세 Base Model의 예측값을 입력 Feature로 사용하고, Ridge Regression이 최종 결합 계수를 직접 학습하는 Stacking 구조를 적용했습니다. 학습된 회귀 계수에 음수 값도 허용됨으로써 다른 모델들과 중복되는 예측 오차를 일부 상쇄하는 잔차 보정 구조가 형성되었으며, 최종 MAPE를 <strong>10.91%</strong>까지 낮췄습니다.</p>"
         },
         {
           "h": "오차 분석 및 데이터 한계 규명",
-          "body": "<p>예측 오차(MAPE)가 15%를 초과하는 주차를 추출하여 오차 발생 원인을 세 가지로 분석했습니다.</p><dl class='paperlist'><dt>이상 기후 변수 부재</dt><dd>2025년 1월 2주 차(오차 17.3%)의 경우, 한파와 폭설로 인한 물류 마비 및 공급 급감 사태가 발생했으나, 학습 데이터 내 유사한 극단적 상황이 부재했고 이진 변수만으로는 기후의 강도를 모델에 충분히 반영하지 못했습니다.</dd><dt>데이터 주기의 불일치</dt><dd>2025년 3월 중순, 중국 춘절 특수로 수출이 전년 대비 250% 증가했으나 월별로 제공되는 수출 데이터의 한계로 인해 주간 가격 상승분(13.8% 과소 예측)을 포착하지 못했습니다.</dd><dt>핵심 변수(재고량) 누락</dt><dd>2024년 12월 4주 차(오차 11.2%)에는 재고 소진에 따른 가격 상승이 있었으나, 재고량 데이터 자체가 존재하지 않아 공급 측면의 압력을 모델링할 수 없었습니다.</dd></dl><p>결론적으로 주요 오차 사례들은 모델 아키텍처의 결함이 아닌, 활용 가능한 데이터의 제약 및 도메인 정보 누락에서 기인했음을 확인했습니다.</p>"
+          "body": "<p>예측 오차가 크게 나타난 대표 시점을 추출하여 오차 발생 원인을 세 가지 유형으로 분석했습니다.</p><dl class='paperlist'><dt>극단 기상 사례 부족 및 강도 표현의 한계</dt><dd>2025년 1월 2주 차(오차 17.3%)에는 한파와 폭설로 공급과 물류 여건이 급변했지만, 학습 데이터에 유사한 극단 사례가 부족했고 <em>is_cold</em>, <em>is_strong_wind</em>와 같은 이진 변수만으로는 기상 이변의 강도를 충분히 표현하지 못했습니다.</dd><dt>데이터 주기의 불일치</dt><dd>2025년 3월 중순 수출량이 전년 동기 대비 약 250% 증가한 구간에서는 월 단위 수출 데이터만으로 주간 변화를 충분히 반영하지 못해 실제 가격을 13.8% 과소 예측했습니다.</dd><dt>핵심 변수(재고량) 누락</dt><dd>2024년 12월 4주 차(오차 11.2%)에는 재고 소진에 따른 가격 상승이 있었으나, 재고량 데이터 자체가 존재하지 않아 공급 측면의 압력을 모델링할 수 없었습니다.</dd></dl><p>대표적인 오차 사례를 분석한 결과, 모델 자체의 복잡도를 높이는 것뿐 아니라 극단 기상 사례, 주간 수출량, 재고량과 같은 도메인 정보의 추가 확보가 성능 개선에 중요하다는 점을 확인했습니다.</p>"
         }
       ],
-      "take": "<p>여러 모델을 결합하는 앙상블 기법이 무조건적인 성능 향상을 보장하지 않으며, 각 모델의 오차 패턴이 상호 보완적(Orthogonal)일 때만 유효하다는 머신러닝의 원리를 실제 데이터로 검증한 프로젝트였습니다.</p><p>또한, 심층적인 오차 분석 과정을 통해 '복잡한 모델 구조'보다 '양질의 도메인 데이터 확보(예: 재고량, 주간 단위 수출량 등)'가 실제 예측 성능 향상에 훨씬 더 결정적인 역할을 한다는 점을 실무적인 관점에서 체득할 수 있었습니다.</p>"
+      "take": "<p>여러 모델을 결합한다고 항상 성능이 향상되는 것은 아니며, 각 모델의 오차 패턴이 충분히 상호보완적일 때 앙상블의 효과가 커진다는 점을 실제 실험을 통해 확인했습니다. 고정된 비율로 결합하는 단순·가중 평균이 단일 최고 모델을 넘지 못한 반면, 결합 계수를 데이터로부터 학습하는 Stacking 구조만이 성능을 개선할 수 있었습니다.</p><p>또한 오차 분석을 통해 모델 구조를 복잡하게 만드는 것뿐 아니라 재고량, 주간 수출량과 같은 도메인 정보를 추가로 확보하는 것이 실제 예측 성능을 개선하는 데 중요한 요소라는 점을 확인했습니다.</p>"
     },
     {
       "id": "anc",
       "lane": "project",
-      "title": "Targeted Active Noise Cancellation System",
+      "title": "Targeted Active Noise Control System",
       "titleSub": "Low-Latency Targeted ANC via Causal Source Separation and Volterra Neural Networks",
       "org": "Intelligent Information SW Academy, Korea University · 메인 모델링 엔지니어",
       "start": "2025-03",
       "end": "2025-06",
       "dateLabel": "2025.03 – 2025.06",
-      "summary": "목표 음성 신호는 보존하고 불필요한 배경 소음만을 선택적으로 제거하는 실시간 타겟 노이즈 캔슬링 시스템을 구현했습니다.",
+      "summary": "안내방송은 보존하고 환경소음만 선택적으로 감쇠하는 저지연 Targeted ANC 파이프라인을 구현하고, 시뮬레이션 환경에서 실시간 처리 가능성을 검증했습니다.",
       "tags": [
         "Real-time",
         "WaveNet-VNN",
         "C-SuDoRM-RF++"
       ],
-      "hero": {
-        "src": "assets/img/anc-pipeline.jpg",
-        "invert": false
-      },
       "outcomes": [
         {
           "date": "2026.11",
@@ -469,26 +448,26 @@
       "sections": [
         {
           "h": "기획 배경 및 문제 정의",
-          "body": "<p>기존의 액티브 노이즈 캔슬링(ANC) 기술은 주변 소음을 무분별하게 차단하여, 안내방송과 같이 필수적인 정보까지 차단하는 한계가 있습니다. 본 프로젝트는 이륜차 소음, 층간 소음 등 다양한 소음 공해 문제를 해결하기 위해, 목표 음성 신호는 보존하고 불필요한 환경 소음만을 선택적으로 제거하는 '타겟 노이즈 캔슬링' 시스템을 기획했습니다.</p><p>특히 장시간 착용 시 청각 질환을 유발할 수 있는 웨어러블 기기(이어폰, 헤드셋)의 한계를 극복하고자 스피커 기반의 비접촉식 공간 제어 시스템으로 접근했습니다. 본 프로젝트는 과학기술정보통신부 및 정보통신기획평가원(IITP) 주관 고려대학교 지능정보 SW아카데미 6기 과제로 수행되었습니다.</p>"
+          "body": "<p>기존 ANC는 입력 음향을 의미적으로 구분하지 않고 감쇠하기 때문에, 안내방송이나 경고음처럼 보존해야 할 정보성 음향까지 함께 저감할 수 있습니다. 본 프로젝트는 지하철·항공기와 같은 복합 모빌리티 음향 환경에서 안내방송은 보존하고 환경소음만 선택적으로 감쇠하는 Targeted ANC 시스템을 설계했습니다.</p><p>향후 모빌리티 및 웨어러블 오디오 환경에 적용할 수 있는 선택적 소음 제어 기술을 목표로, 단일 채널 입력을 처리하는 시뮬레이션 기반 ANC 파이프라인을 구성했습니다. 본 프로젝트는 과학기술정보통신부 및 정보통신기획평가원(IITP) 주관 고려대학교 지능정보 SW아카데미 6기 과제로 수행되었습니다.</p>"
         },
         {
           "h": "시스템 아키텍처 및 파이프라인 설계",
-          "body": "<p>전체 시스템은 크게 3단계 파이프라인으로 구성되었습니다.</p><dl class='paperlist'><dt>음원 분리 (C-SuDoRM-RF++)</dt><dd>혼합된 오디오 신호를 개별 성분으로 분리합니다. 1차원 시계열 데이터에 최적화된 U-ConvBlock을 설계하여 다양한 시간 해상도(Time Resolution)의 특징을 동시에 추출했습니다. 다운샘플링을 통해 전역적(Global) 문맥을 학습하고, 스킵 커넥션(Skip Connection)을 동반한 업샘플링으로 세부 신호를 손실 없이 복원합니다.</dd><dt>음원 분류 (Classification)</dt><dd>분리된 각 오디오 성분을 분석하여 타겟 소음 여부를 실시간으로 판정합니다.</dd><dt>소음 저감 (WaveNet-Volterra)</dt><dd>타겟으로 지정된 소음 신호에 대해서만 역위상(Anti-phase) 신호를 생성합니다. 고주파 대역에서 발생하는 비선형적 왜곡(Non-linear Distortion)을 효과적으로 모델링하기 위해 Volterra 필터 구조를 결합했습니다.</dd></dl><p>학습 데이터로는 DEMAND와 MS-SNSD 데이터셋을 활용했으며, 도심 지하철 환경의 실효성 검증을 위해 서울 지하철 안내방송 및 선로 소음을 합성한 자체 데이터셋을 구축하여 분리 모델을 고도화했습니다.</p>"
+          "body": "<figure class='fig'><img src='assets/img/anc-pipeline.jpg' alt='Targeted ANC pipeline'></figure><p>전체 시스템은 크게 3단계 파이프라인으로 구성되었습니다.</p><dl class='paperlist'><dt>음원 분리 (C-SuDoRM-RF++)</dt><dd>C-SuDoRM-RF++의 causal U-ConvBlock 구조를 적용하여, 원시 파형에서 여러 시간 해상도의 특징과 넓은 과거 수용영역을 효율적으로 추출했습니다. 저해상도 특징과 고해상도 특징을 결합하여 세부 파형의 복원 성능을 보완했습니다.</dd><dt>음원 분류 (Audio Segment Classifier)</dt><dd>PIT 기반 분리 모델은 출력 순서가 고정되지 않기 때문에, 1D CNN 기반 Audio Segment Classifier가 각 분리 출력을 안내방송과 환경소음으로 판별했습니다. 안내방송 branch는 저감 단계를 우회하고, 소음 branch만 WaveNet-VNN으로 전달하도록 라우팅했습니다.</dd><dt>소음 저감 (WaveNet-VNN)</dt><dd>WaveNet의 dilated causal convolution으로 장기적인 시간 의존성을 모델링하고, Volterra Neural Network를 결합하여 스피커·증폭기 등 출력 경로에서 발생할 수 있는 비선형 왜곡을 반영한 역소음 신호를 생성했습니다.</dd></dl><p>WaveNet-VNN 저감 모델은 기존 연구와 동일한 DEMAND 및 MS-SNSD 데이터셋을 사용했습니다. 분리·분류 모델에는 서울 지하철 1~8호선 안내방송, 항공기 안내방송, 철도 및 도시 교통 소음 등 여러 출처의 음원을 16 kHz mono 형식으로 표준화하여 사용했으며, 안내방송이 환경소음보다 5 dB 높도록 혼합해 모빌리티 환경용 학습 데이터를 구성했습니다.</p>"
         },
         {
-          "h": "실시간 처리 제약 및 레이턴시 최적화",
-          "body": "<p>능동 소음 제어의 물리적 특성상, 실제 소음이 청취자에게 도달하기 전에 역위상 신호를 연산 및 방사해야 하므로 엄격한 저지연(Low-latency) 성능이 요구되었습니다. 이를 위해 미래 프레임을 참조할 수 없는 인과적(Causal) 모델 구조만을 사용하도록 파이프라인 전체를 설계했습니다.</p><p>16kHz 샘플링 레이트 기준, 모델 경량화 및 TorchScript JIT 컴파일 최적화를 적용하여 분류 모듈의 추론 시간을 21.47ms에서 16.76ms로 단축했습니다. 각 단계별 지연 시간(음원 분리 8.45ms, 분류 16.76ms, 소음 저감 9.6ms)을 병렬 최적화하여 종단 간(End-to-End) 총 지연 시간을 24.64ms 수준으로 통제했습니다. 최종적으로 초기 구조 대비 연산량(FLOPs)은 20.4%, Real-Time Factor(RTF)는 21.43% 개선했습니다.</p>"
+          "h": "실시간 처리 제약 및 레이턴시 측정",
+          "body": "<p>능동 소음 제어의 물리적 특성상, 실제 소음이 청취자에게 도달하기 전에 역위상 신호를 연산 및 방사해야 하므로 엄격한 저지연(Low-latency) 성능이 요구되었습니다. 이를 위해 미래 프레임을 참조할 수 없는 인과적(Causal) 모델 구조만을 사용하도록 파이프라인 전체를 설계했습니다.</p><p>모든 모듈은 16 kHz 단일 채널 입력을 기준으로 인과적 구조를 적용했습니다. C-SuDoRM-RF++는 1초 입력을 평균 8.45 ms에 처리했으며, WaveNet-VNN은 9.6 ms를 기록했습니다. ASC에는 TorchScript 최적화를 적용해 독립 실행시간을 21.47 ms에서 16.76 ms로 단축했습니다. 통합 파이프라인은 개별 모듈 시간의 단순 합산이 아닌 별도 End-to-End 측정에서 1초 입력당 약 <strong>24.64 ms</strong>의 처리시간을 기록했습니다.</p><p>해당 수치는 시뮬레이션 및 소프트웨어 추론 환경에서 측정한 결과로, 오디오 수집 버퍼와 ADC/DAC, 실제 스피커 전파 지연까지 포함한 물리적 폐루프 지연은 아닙니다.</p><p>또한 WaveNet-VNN을 기존 3 stacks·9 dilations에서 2 stacks·10 dilations로 경량화하여, 해당 저감 모듈의 기준 구조 대비 계산 복잡도를 20.4% 줄이고 RTF를 21.43% 개선했습니다.</p>"
         },
         {
           "h": "성능 평가 및 결과",
-          "body": "<table class='tbl'><thead><tr><th>Model</th><th>dBA</th><th>NMSE</th><th>SI-SDRi</th><th>GFLOPs</th></tr></thead><tbody><tr><td>FxLMS</td><td>-25</td><td>-30</td><td>—</td><td>0.01</td></tr><tr><td>SFANC</td><td>-28</td><td>-32</td><td>—</td><td>0.15</td></tr><tr><td>Conv-TasNet</td><td>—</td><td>—</td><td>15.3</td><td>2.7</td></tr><tr><td>DPRNN</td><td>—</td><td>—</td><td>18.8</td><td>3.1</td></tr><tr><td>Targeted-ANC</td><td>-35.12</td><td>-43.72</td><td>12.51</td><td>1.954</td></tr></tbody></table><p>정량적 평가 결과, 제안된 Targeted-ANC 모델은 기존 신호 처리 기반 ANC 기법 대비 월등한 소음 저감 성능(-35.12 dBA)을 기록했습니다. 특히 기존 딥러닝 기반 음원 분리 모델들과 유사한 수준의 신호 복원력(SI-SDRi 12.51)을 유지하면서도 연산량(GFLOPs)을 절반 이하로 단축하여 실시간 시스템으로서의 실효성을 입증했습니다.</p><figure class='fig'><img src='assets/img/anc-spectrogram.jpg' alt='Spectrogram before and after ANC'><figcaption class='cap-plain'>ANC 적용 전후 스펙트로그램</figcaption></figure>"
+          "body": "<p>ANC 저감 및 음원 분리 기준 모델과의 성능 비교입니다.</p><table class='tbl'><thead><tr><th>모델</th><th>비교 영역</th><th class='num'>dBA</th><th class='num'>NMSE</th><th class='num'>SI-SDRi</th><th class='num'>GFLOPs</th></tr></thead><tbody><tr><td>FxLMS</td><td>ANC 저감</td><td class='num'>-25</td><td class='num'>-30</td><td class='num'>—</td><td class='num'>0.01</td></tr><tr><td>SFANC</td><td>ANC 저감</td><td class='num'>-28</td><td class='num'>-32</td><td class='num'>—</td><td class='num'>0.15</td></tr><tr><td>Conv-TasNet</td><td>음원 분리</td><td class='num'>—</td><td class='num'>—</td><td class='num'>15.3</td><td class='num'>2.7</td></tr><tr><td>DPRNN</td><td>음원 분리</td><td class='num'>—</td><td class='num'>—</td><td class='num'>18.8</td><td class='num'>3.1</td></tr><tr><td>SuDoRM-RF</td><td>음원 분리</td><td class='num'>—</td><td class='num'>—</td><td class='num'>16.1</td><td class='num'>0.9</td></tr><tr><td>Targeted ANC</td><td>통합 제안 구조</td><td class='num'>-35.12</td><td class='num'>-43.72</td><td class='num'>12.51</td><td class='num'>1.954</td></tr></tbody></table><p>KICS 논문의 통합 시뮬레이션 결과이며, ANC 비교 수치는 비선형 조건에서 측정했습니다. SI-SDRi는 분리 모듈의 결과이고 dBA·NMSE는 저감 성능이므로 동일 지표끼리 비교해야 합니다.</p><p>제안 시스템은 FxLMS와 SFANC보다 낮은 dBA 및 NMSE를 기록했습니다. 분리 성능은 SI-SDRi 12.51 dB로 비인과·고성능 분리 기준 모델보다 낮았지만, 인과적 처리와 선택적 ANC 통합을 함께 고려한 절충 결과를 제시했습니다. 계산량은 1.954 GFLOPs로 Conv-TasNet과 DPRNN보다 각각 약 27.6%, 37.0% 낮았습니다. 이를 통해 시뮬레이션 환경에서 저지연 선택적 ANC의 구현 가능성을 확인했습니다.</p><figure class='fig'><img src='assets/img/anc-spectrogram.jpg' alt='Spectrogram before and after ANC'><figcaption class='cap-plain'>ANC 적용 전후 스펙트로그램</figcaption></figure>"
         },
         {
-          "h": "추가 설계 — 물리적 스피커 최적 배치",
-          "body": "<p>기획 초기 단계에서는 하드웨어 구현을 염두에 두고 FEM 시뮬레이션 기반의 물리적 음장 해석과 다층 퍼셉트론(MLP)을 활용한 최적 스피커 배치 알고리즘을 설계하여 공간 제어의 완성도를 높이고자 했습니다.</p>"
+          "h": "초기 기획 단계의 추가 검토",
+          "body": "<p>초기 기획 단계에서는 실제 공간 적용을 고려해 FEM 기반 음장 해석과 MLP 기반 스피커 배치 최적화 방안을 추가로 검토했습니다. 다만 해당 설계는 최종 모델의 정량 평가에는 포함되지 않았습니다.</p>"
         }
       ],
-      "take": "<p>센서를 통한 관측, 타겟 여부 판단, 역위상 신호를 통한 환경 개입, 그리고 잔차 신호의 재관측으로 이어지는 폐루프 제어(Closed-loop Control) 시스템을 소프트웨어로 직접 구현한 프로젝트였습니다. 이 경험은 훗날 에이전트의 정책 학습이나 세계 모델(World Model)의 작동 원리를 직관적으로 이해하는 중요한 밑거름이 되었습니다.</p><p>특히 '미래 시점의 데이터를 참조할 수 없는 인과적 제약'이라는 실시간 시스템의 한계가 단지 극복해야 할 장애물이 아니라 전체 아키텍처의 설계를 주도하는 핵심 기준점이 됨을 체감했습니다. 메인 모델링 엔지니어로서 End-to-End 방식부터 모듈화된 파이프라인 구성까지 다각적인 아키텍처 실험을 주도하며, 단순한 모델 성능 향상을 넘어 실제 환경 적용(Deployment)을 고려한 문제 해결 역량을 기를 수 있었습니다.</p>"
+      "take": "<p>기준 소음의 관측, 소음·안내방송 판별, 역위상 제어 신호 생성, 잔류 오차 평가로 이어지는 폐루프 ANC 구조를 RIR과 스피커 비선형성 모델을 포함한 시뮬레이션으로 구현했습니다. 이 경험은 이후 에이전트의 정책 학습이나 세계 모델(World Model)의 작동 원리를 직관적으로 이해하는 중요한 밑거름이 되었습니다.</p><p>특히 '미래 시점의 데이터를 참조할 수 없는 인과적 제약'이라는 실시간 시스템의 한계가 단지 극복해야 할 장애물이 아니라 전체 아키텍처의 설계를 주도하는 핵심 기준점이 됨을 체감했습니다.</p><p>메인 모델링 엔지니어로서 분리·분류·저감 모듈을 연결한 통합 파이프라인과 각 모듈의 구조 최적화를 수행하며, 정확도뿐 아니라 인과성·계산량·처리시간을 함께 고려하는 시스템 설계 경험을 쌓았습니다. 이를 통해 실제 배포에 필요한 인과성·지연·계산량 제약을 모델 설계 단계에서 고려하는 문제 해결 역량을 길렀습니다.</p>"
     },
     {
       "id": "sw-academy",
